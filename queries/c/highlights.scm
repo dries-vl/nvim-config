@@ -83,3 +83,20 @@
 
 ; Custom todo finder
 ((comment) @comment.todo (#match? @comment.todo ".*TODO.*"))
+; Custom pointer variable matcher
+(
+  ("*" @ptr.star)
+  (identifier) @ptr.name
+)
+((identifier) @pointer 
+  (#match? @pointer "^p[A-Z_]"))
+
+;; Capture the function name in function declarations
+(function_definition
+  declarator: (function_declarator
+    declarator: (identifier) @function.name))
+
+;; Capture the function body (the code block inside the function)
+(function_definition
+  body: (compound_statement) @function.body)
+

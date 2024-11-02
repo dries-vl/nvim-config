@@ -1,6 +1,11 @@
 -- RUST COLORS
 local hl = vim.api.nvim_set_hl
-hl(0, "Normal", { bg = "#FFFFFF", fg = "#000000"})
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = { "*.rs" },  -- Multiple patterns in a table
+    callback = function()
+        vim.api.nvim_set_hl(0, "Normal", { bg = "#ffffff", fg = "#000000" })
+    end
+})
 hl(0, "@annotation.rust", { fg = "#646464", bold = true })
 hl(0, "@comment.rust", { fg = "#646464", bg = "#d5d5d5", bold = true })
 hl(0, "@comment.documentation.rust", { fg = "#727171", bold = true })

@@ -11,18 +11,19 @@ vim.api.nvim_set_hl(0, "@comment.todo", { fg = "#FF0000", bold = true })
 vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#FFFFFF', fg = '#000000' })
 vim.api.nvim_set_hl(0, 'FloatBorder', { bg = '#FFFFFF', fg = '#000000' })
 -- Lsp error/warning/info highlights
-vim.api.nvim_set_hl(0, "DiagnosticError", { fg = "#745454", bg = "#e5d2d2", bold = true })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { undercurl = true, sp = "#FF9999" })
-vim.api.nvim_set_hl(0, "DiagnosticWarn", { fg = "#747454", bg = "#e5e5d2", bold = true })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { undercurl = true, sp = "#FFD1A6" })
-vim.api.nvim_set_hl(0, "DiagnosticInfo", { fg = "#545474", bg = "#d2d2e5", bold = true })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { undercurl = true, sp = "#99CCFF" })
-vim.api.nvim_set_hl(0, "DiagnosticHint", { fg = "#548484", bg = "#d2e9e9", bold = true })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { undercurl = true, sp = "#CCE5FF" })
+vim.api.nvim_set_hl(0, "DiagnosticError", { fg = "#000000", bold = true })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { bg = "#000000" })
+vim.api.nvim_set_hl(0, "DiagnosticWarn", { fg = "#000000", bold = true })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { bg = "#000000" })
+vim.api.nvim_set_hl(0, "DiagnosticInfo", { fg = "#000000", bold = true })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { bg = "#000000" })
+vim.api.nvim_set_hl(0, "DiagnosticHint", { fg = "#000000", bold = true })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { bg = "#000000" })
 
 -- Execute the two language-specific color schemes
 dofile(vim.fn.stdpath('config') .. '/colors/rust.lua')
 dofile(vim.fn.stdpath('config') .. '/colors/c.lua')
+dofile(vim.fn.stdpath('config') .. '/colors/lua.lua')
 
 -- Command to see the treesitter highlight group of something under the cursor
 -- Inspect (actually just better than the below)

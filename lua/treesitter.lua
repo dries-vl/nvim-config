@@ -6,5 +6,11 @@ require'nvim-treesitter.configs'.setup{
 	highlight={enable=true}
 }
 
+vim.filetype.add({
+    extension = {
+        h = "c",
+	glsl = "c"
+    }
+})
 
 

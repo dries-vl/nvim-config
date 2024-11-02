@@ -15,7 +15,7 @@ vim.bo.buftype = 'nofile'     -- Set buffer as scratch
 vim.bo.bufhidden = 'wipe'     -- Wipe buffer when unloaded
 vim.bo.swapfile = false       -- Don't use swapfile
 vim.bo.buflisted = false      -- Don't list buffer
-vim.api.nvim_win_set_width(left_win, 35)  -- Set the width of the whitespace we want
+vim.api.nvim_win_set_width(left_win, 25)  -- Set the width of the whitespace we want
 
 -- Remove the separator line and tildes in the left window
 vim.api.nvim_win_set_option(left_win, 'fillchars', 'eob: ,vert: ')

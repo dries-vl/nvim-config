@@ -6,12 +6,14 @@ vim.keymap.set('n', 'n', '5j')
 vim.keymap.set('v', 'n', '5j')
 vim.keymap.set('n', ';', 'n')
 vim.keymap.set('v', ';', 'n')
+vim.keymap.set('n', '<C-m>', ':bprevious<CR>')
+vim.keymap.set('n', '<C-i>', ':bNext<CR>')
 vim.keymap.set('n', '<C-a>', 'ggVG') -- allow ctrl+a to select the entire file
 vim.keymap.set('n', '<M-c>', ':e $MYVIMRC<CR>') --set shortcut to go to this config quickly
 vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true }) -- ensure correct goto definition behavior
 vim.api.nvim_set_option('clipboard', 'unnamed')
-vim.keymap.set('n', 'y', '"+y') -- make yank copy to system cliboard
-vim.keymap.set('n', 'p', '"+p') -- make paste also paste the system clipboard
+--vim.keymap.set('n', 'y', '"+y') -- make yank copy to system cliboard
+--vim.keymap.set('n', 'p', '"+p') -- make paste also paste the system clipboard
 vim.api.nvim_set_keymap('i', '<C-n>', '<C-x><C-o>', { noremap = false, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>t', ':! RUN.bat<CR>', { noremap = true, silent = false })
 vim.o.wrap = false

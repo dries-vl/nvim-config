@@ -58,7 +58,7 @@ require'lspconfig'.rust_analyzer.setup({
 })
 
 local project_root = vim.fn.getcwd()  -- Get the current working directory
-local cuda_home = vim.loop.os_getenv("CUDA_HOME") or "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.3"
+--local cuda_home = vim.loop.os_getenv("CUDA_HOME") or "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.3"
 
 -- C LSP SETUP
 require'lspconfig'.clangd.setup({
@@ -70,10 +70,10 @@ require'lspconfig'.clangd.setup({
    init_options = {
 	   fallbackFlags = { -- Find include directories etc. to help lsp
 		"-I" .. project_root .. "/include",
-		"-I" .. cuda_home .. "/include",
-		"-x", "cuda",
-		"--cuda-path=" .. cuda_home,
-		"--cuda-gpu-arch=sm_86"
+		--"-I" .. cuda_home .. "/include",
+		--"-x", "cuda",
+		--"--cuda-path=" .. cuda_home,
+		--"--cuda-gpu-arch=sm_86"
 	   }
    }
 })
