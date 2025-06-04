@@ -4,7 +4,6 @@ vim.keymap.set('n', 'e', '5k')
 vim.keymap.set('v', 'e', '5k')
 vim.keymap.set('n', 'n', '5j')
 vim.keymap.set('v', 'n', '5j')
-vim.keymap.set('n', '<C-Tab>', function() print('Ctrl+Tab pressed!') end)
 --vim.keymap.set('n', ';', 'n')
 --vim.keymap.set('v', ';', 'n')
 vim.keymap.set('n', '<C-m>', ':bprevious<CR>')
@@ -29,6 +28,7 @@ vim.opt.laststatus = 0 -- remove the status line entirely from all windows (!)
 vim.o.tabstop = 4           -- number of visual spaces per TAB
 vim.o.shiftwidth = 4        -- number of spaces to use for each step of (auto)indent
 vim.opt.shadafile = 'NONE' -- don't write a shada file (contains the registers/buffers of the prev. session, but issues!)
+vim.opt.formatoptions:remove('o') -- don't start a new comment when entering new line from comment
 
 if vim.g.neovide then
 	vim.g.neovide_cursor_trail_size = 1.0
@@ -57,11 +57,11 @@ require('navigate')
 -- LAYOUT SETUP
 require('zen')
 
--- LSP SETUP (in lua/lsp.lua)
+-- LSP SETUP
 require('lsp-setup')
 
--- TREESITTER SETUP (in lua/treesitter.lua)
+-- TREESITTER SETUP
 require('treesitter-setup')
 
--- COLOR SCHEME (in colors/rust_rover.lua) (load at the end, to avoid overriding it)
+-- COLOR SCHEME (load at the end, to avoid overriding it)
 vim.cmd 'colorscheme naysayer'
