@@ -1,9 +1,11 @@
+vim.opt.laststatus = 0 -- remove the status line entirely from all windows (!)
+
+--[[
 -- Save the current window ID (right window)
 local right_win = vim.api.nvim_get_current_win()
 
 -- Create a vertical split to the left without changing focus
 vim.cmd('leftabove vsplit')
-vim.opt.laststatus = 0 -- remove the status line entirely from all windows (!)
 
 -- Get the window ID of the window currently on the left (the new window)
 local left_win = vim.fn.win_getid(vim.fn.winnr('h'))
@@ -15,7 +17,7 @@ vim.bo.buftype = 'nofile'     -- Set buffer as scratch
 vim.bo.bufhidden = 'wipe'     -- Wipe buffer when unloaded
 vim.bo.swapfile = false       -- Don't use swapfile
 vim.bo.buflisted = false      -- Don't list buffer
-vim.api.nvim_win_set_width(left_win, 35)  -- Set the width of the whitespace we want
+vim.api.nvim_win_set_width(left_win, 10)  -- Set the width of the whitespace we want
 
 -- Remove the separator line and tildes in the left window
 vim.api.nvim_win_set_option(left_win, 'fillchars', 'eob: ,vert: ')
@@ -54,29 +56,7 @@ vim.api.nvim_create_autocmd({"BufLeave", "WinEnter"}, {
         end
     end
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+]]
 
 -- Function to toggle a centered floating window
 local centered_win = nil

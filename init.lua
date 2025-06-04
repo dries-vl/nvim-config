@@ -4,18 +4,20 @@ vim.keymap.set('n', 'e', '5k')
 vim.keymap.set('v', 'e', '5k')
 vim.keymap.set('n', 'n', '5j')
 vim.keymap.set('v', 'n', '5j')
-vim.keymap.set('n', ';', 'n')
-vim.keymap.set('v', ';', 'n')
+vim.keymap.set('n', '<C-Tab>', function() print('Ctrl+Tab pressed!') end)
+--vim.keymap.set('n', ';', 'n')
+--vim.keymap.set('v', ';', 'n')
+vim.keymap.set('n', '<C-m>', ':bprevious<CR>')
+vim.keymap.set('n', '<C-i>', ':bNext<CR>')
 vim.keymap.set('n', '<C-a>', 'ggVG') -- allow ctrl+a to select the entire file
 vim.keymap.set('n', '<M-c>', ':e $MYVIMRC<CR>') --set shortcut to go to this config quickly
 vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true }) -- ensure correct goto definition behavior
-vim.api.nvim_set_option('clipboard', 'unnamed')
-vim.keymap.set('n', 'y', '"+y') -- make yank copy to system cliboard
-vim.keymap.set('n', 'p', '"+p') -- make paste also paste the system clipboard
+vim.api.nvim_set_option('clipboard', 'unnamed') -- configure clipboard to be able to use system clipboard
+--vim.keymap.set('n', 'y', '"+y') -- make yank copy to system cliboard (wsl)
+--vim.keymap.set('n', 'p', '"+p') -- make paste also paste the system clipboard (wsl)
 vim.api.nvim_set_keymap('i', '<C-n>', '<C-x><C-o>', { noremap = false, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>t', ':! RUN.bat<CR>', { noremap = true, silent = false })
+vim.api.nvim_set_keymap('n', '<leader>t', ':!RUN.bat<CR>', { noremap = true, silent = false })
 vim.o.wrap = false
-vim.opt.guifont = 'Consolas:h12' -- only works for setting font size in neovide, in terminal the terminal font size is always used
 vim.opt.foldenable = false
 vim.o.number = false
 vim.o.relativenumber = false
@@ -23,14 +25,16 @@ vim.opt.cmdheight = 0 -- put status bar at bottom instead of at offset
 vim.o.signcolumn = 'no' -- remove the gutter
 vim.o.foldcolumn = '0' -- remove the gutter
 vim.diagnostic.config {signs = false} -- remove the gutter
+vim.opt.laststatus = 0 -- remove the status line entirely from all windows (!)
+vim.o.tabstop = 4           -- number of visual spaces per TAB
+vim.o.shiftwidth = 4        -- number of spaces to use for each step of (auto)indent
+vim.opt.shadafile = 'NONE' -- don't write a shada file (contains the registers/buffers of the prev. session, but issues!)
 
-require('zen')
-
-local notify = require('notification')
-notify.show_notification("Hello, Neovim!")
-
--- vim.g.neovide_transparency = 0.9
--- vim.g.neovide_fullscreen = true
+if vim.g.neovide then
+	vim.g.neovide_cursor_trail_size = 1.0
+	vim.g.neovide_fullscreen = true
+	vim.opt.guifont = 'JetBrains Mono:h12' -- set font size in neovide, use terminal font size otherwise
+end
 
 vim.opt.updatetime = 250 -- decrease reaction time
 vim.opt.timeoutlen = 250 -- this makes the which-key window pop up sooner
@@ -43,16 +47,21 @@ vim.api.nvim_create_autocmd('TextYankPost', { -- Highlight when yanking (copying
   end,
 })
 
+-- NOTIFICATION SETUP
+-- local notify = require('notification')
+-- notify.show_notification("Hello, Neovim!")
+
+-- LAYOUT SETUP
+require('navigate')
+
+-- LAYOUT SETUP
+require('zen')
+
 -- LSP SETUP (in lua/lsp.lua)
-require('lsp')
+require('lsp-setup')
 
 -- TREESITTER SETUP (in lua/treesitter.lua)
-require('treesitter')
+require('treesitter-setup')
 
 -- COLOR SCHEME (in colors/rust_rover.lua) (load at the end, to avoid overriding it)
-vim.cmd 'colorscheme dvl-colors'
-
-
-
-
-
+vim.cmd 'colorscheme naysayer'

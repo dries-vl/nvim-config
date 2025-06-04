@@ -23,15 +23,18 @@ capabilities.textDocument.completion = {
 -- Function that runs when LSP attaches to buffer
 local on_attach = function(client, bufnr)
 
+  -- code action
+  local opts = { noremap = true, silent = true, buffer = bufnr }
+  vim.keymap.set('v', '<leader>ga', vim.lsp.buf.code_action, opts)
+
   -- IMPORTANT: make sure treesitter highlight groups are not overridden by lsp highlight groups!
   client.server_capabilities.semanticTokensProvider = false
 
   -- Ensure omnifunc is set to enable autocomplete suggestions from the LSP
   vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
-  
   -- Check every character before typing, and if it's `.` then open autocomplete popup
   vim.api.nvim_create_autocmd("InsertCharPre", {
-    pattern = "*",
+    pattern = ".",
     callback = function()
       local char = vim.v.char
         vim.defer_fn(function()
@@ -39,7 +42,6 @@ local on_attach = function(client, bufnr)
         end, 0)
     end,
   })
-  
 end
 
 -- RUST LSP SETUP
@@ -71,9 +73,7 @@ require'lspconfig'.clangd.setup({
 	   fallbackFlags = { -- Find include directories etc. to help lsp
 		"-I" .. project_root .. "/include",
 		"-I" .. cuda_home .. "/include",
-		"-x", "cuda",
-		"--cuda-path=" .. cuda_home,
-		"--cuda-gpu-arch=sm_86"
+		"-I" .. "C:/VulkanSDK/1.3.296.0/Include",
 	   }
    }
 })

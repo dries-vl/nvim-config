@@ -1,4 +1,4 @@
-(identifier) @variable
+(identifier) @variable               ; default priority 110
 
 ((identifier) @constant
  (#match? @constant "^[A-Z][A-Z\\d_]*$"))
@@ -80,6 +80,17 @@
 
 (comment) @comment
 
+; Custom todo finder for // todo
+((comment) @todo
+ (#match? @todo "// todo"))
 
-; Custom todo finder
-((comment) @comment.todo (#match? @comment.todo ".*TODO.*"))
+((comment) @comment.info
+ (#match? @comment.info "// info"))
+
+; Find comments starting with // * 
+((comment) @comment-asterisk
+ (#match? @comment-asterisk "// \\*"))
+
+; Find comments starting with // -
+((comment) @comment-minus
+ (#match? @comment-minus "// \\-"))

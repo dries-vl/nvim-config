@@ -1,12 +1,12 @@
 -- Set the background to light
-vim.o.background = "light"
+--vim.o.background = "light"
 
 -- Clear existing highlights and reset syntax
 vim.cmd("highlight clear")
 vim.cmd("syntax reset")
 
 -- Custom todo highlight
-vim.api.nvim_set_hl(0, "@comment.todo", { fg = "#FF0000", bold = true })
+vim.api.nvim_set_hl(0, "@comment.todo", { fg = "#FF0000", bold = true, underdotted = true })
 -- Make sure floating windows follow the same style
 vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#FFFFFF', fg = '#000000' })
 vim.api.nvim_set_hl(0, 'FloatBorder', { bg = '#FFFFFF', fg = '#000000' })
@@ -22,7 +22,7 @@ vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { undercurl = true, sp = "#CCE
 
 -- Execute the two language-specific color schemes
 dofile(vim.fn.stdpath('config') .. '/colors/rust.lua')
-dofile(vim.fn.stdpath('config') .. '/colors/c.lua')
+-- dofile(vim.fn.stdpath('config') .. '/colors/c.lua')
 
 -- Command to see the treesitter highlight group of something under the cursor
 -- Inspect (actually just better than the below)
