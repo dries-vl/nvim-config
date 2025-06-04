@@ -47,6 +47,9 @@ vim.api.nvim_create_autocmd('TextYankPost', { -- Highlight when yanking (copying
   end,
 })
 
+-- COLOR SCHEME
+vim.cmd 'colorscheme naysayer'
+
 -- NOTIFICATION SETUP
 -- local notify = require('notification')
 -- notify.show_notification("Hello, Neovim!")
@@ -62,6 +65,3 @@ require('lsp-setup')
 
 -- TREESITTER SETUP
 require('treesitter-setup')
-
--- COLOR SCHEME (load at the end, to avoid overriding it)
-vim.cmd 'colorscheme naysayer'
