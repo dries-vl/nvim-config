@@ -84,13 +84,24 @@
 ((comment) @todo
  (#match? @todo "// todo"))
 
-((comment) @comment.info
- (#match? @comment.info "// info"))
+((comment) @comment.info (#match? @comment.info "// info"))
 
 ; Find comments starting with // * 
-((comment) @comment-asterisk
- (#match? @comment-asterisk "// \\*"))
+((comment) @comment-asterisk (#match? @comment-asterisk "// \\*"))
 
 ; Find comments starting with // -
-((comment) @comment-minus
- (#match? @comment-minus "// \\-"))
+((comment) @comment-minus (#match? @comment-minus "// \\-"))
+
+; Custom pointer variable matcher
+(("*" @ptr.star) (identifier) @ptr.name)
+
+((identifier) @pointer (#match? @pointer "^p[A-Z_]"))
+
+;; Capture the function name in function declarations
+(function_definition
+  declarator: (function_declarator
+    declarator: (identifier) @function.name))
+
+;; Capture the function body (the code block inside the function)
+(function_definition
+  body: (compound_statement) @function.body)
