@@ -1,15 +1,7 @@
--- Set the background to light
---vim.o.background = "light"
-
 -- Clear existing highlights and reset syntax
 vim.cmd("highlight clear")
 vim.cmd("syntax reset")
 
--- Custom todo highlight
-vim.api.nvim_set_hl(0, "@comment.todo", { fg = "#FF0000", bold = true, underdotted = true })
--- Make sure floating windows follow the same style
-vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#FFFFFF', fg = '#000000' })
-vim.api.nvim_set_hl(0, 'FloatBorder', { bg = '#FFFFFF', fg = '#000000' })
 -- Lsp error/warning/info highlights
 vim.api.nvim_set_hl(0, "DiagnosticError", { fg = "#745454", bg = "#e5d2d2", bold = true })
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { undercurl = true, sp = "#FF9999" })
@@ -20,13 +12,8 @@ vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { undercurl = true, sp = "#99C
 vim.api.nvim_set_hl(0, "DiagnosticHint", { fg = "#548484", bg = "#d2e9e9", bold = true })
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { undercurl = true, sp = "#CCE5FF" })
 
--- Execute the two language-specific color schemes
-dofile(vim.fn.stdpath('config') .. '/colors/rust.lua')
--- dofile(vim.fn.stdpath('config') .. '/colors/c.lua')
-
--- Command to see the treesitter highlight group of something under the cursor
--- Inspect (actually just better than the below)
--- lua print(vim.inspect(vim.treesitter.get_captures_at_cursor(0)))
+-- Actual colorscheme
+dofile(vim.fn.stdpath('config') .. '/colors/naysayer.lua')
 
 --[[
 		All possible values to add

@@ -1,22 +1,41 @@
-local hl = vim.api.nvim_set_hl
-
 -- NAYSAYER THEME
-hl(0, "Normal",            { bg = "#062329", fg = "#d1b897" })
-hl(0, "@comment.c",        { fg = "#44b340" })
-hl(0, "@constant.c",       { fg = "#7ad0c6" })
-hl(0, "@variable.c",       { fg = "#c1d1e3" })
---hl(0, "@function.body.c",  { bg = "#0b3335" })
-hl(0, "@function.name.c",  { fg = "#ffffff" })
-hl(0, "@property.c",       { fg = "#c1d1e3" })
-hl(0, "@function.c",       { fg = "#ffffff" })
-hl(0, "@keyword.c",        { fg = "#ffffff" })
-hl(0, "@type.c",           { fg = "#d1b897" })
-hl(0, "@string.c",         { fg = "#2ec90c" })
-hl(0, "@character.c",      { fg = "#d1b897" })
-hl(0, "@number.c",         { fg = "#7ad0c6" })
-hl(0, "@operator.c",       { fg = "#ffffff", bold = true })
+local hl = vim.api.nvim_set_hl
+-- Custom groups
+hl(0, "cUserFunction",        { fg = "#ffffff", bold = true })
+hl(0, "cUserFunctionPointer", { fg = "#b7ecff", bold = true, italic = true })
 
--- Map naysayer colors to terminal ANSI slots.
+-- Vim groups
+hl(0, "Normal",         { bg = "#062329", fg = "#d1b897" })
+hl(0, "Comment",        { fg = "#44b340" })
+hl(0, "cCommentL",      { fg = "#44b340" })
+hl(0, "cCommentStart",  { fg = "#44b340" })
+hl(0, "Error",          { fg = "#d1b897" })
+
+hl(0, "Type",           { fg = "#c1d1e3" })
+hl(0, "Structure",      { fg = "#ffbbbb" })
+hl(0, "StorageClass",   { fg = "#c1d1e3" })
+
+hl(0, "Statement",      { fg = "#c1d1e3" })
+hl(0, "Conditional",    { fg = "#c1d1e3" }) -- if else
+hl(0, "Label",          { fg = "#c1d1e3" }) -- case in switches
+hl(0, "UserLabel",      { fg = "#c1d1e3" }) -- ie. goto start <- the label
+
+hl(0, "PreProc",        { fg = "#d1b897" }) -- #pragma, ...
+hl(0, "cIncluded",      { fg = "#c1d1e3" }) -- <stdio.h>
+hl(0, "Include",        { fg = "#d1b897" }) -- #include
+hl(0, "PreCondit",      { fg = "#148310" }) -- #ifdef
+hl(0, "cDefine",        { fg = "#d1b897" }) -- #define
+
+hl(0, "Number",         { fg = "#7ad0c6" })
+hl(0, "Float",          { fg = "#7ad0c6" })
+hl(0, "Octal",          { fg = "#7ad0c6" })
+hl(0, "Character",      { fg = "#7ad0c6" })
+
+hl(0, "String",         { fg = "#2ec90c" })
+hl(0, "SpecialChar",    { fg = "#44b3ff" }) -- special chars like \n
+hl(0, "cFormat",        { fg = "#d1b897", bold = true }) -- format specifiers like %d (default links to special char)
+
+-- Terminal ANSI groups
 hl(0, "NormalFloat",       { bg = "#032026", fg = "#d1b897" })
 vim.g.terminal_color_0  = "#163339" -- Black       (theme background)
 vim.g.terminal_color_1  = "#44b340" -- Red         (comment green, fits as a "muted red")
