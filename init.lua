@@ -1,5 +1,6 @@
 vim.g.mapleader = 't'
 vim.g.maplocalleader = 't'
+vim.o.cmdheight = 10 -- to avoid messages popup in output in vscode
 vim.o.scrolloff = 5
 vim.opt.path:append("**") -- allow :find to be a fuzzy finder, :b can also fuzzy find for buffers out of the box
 vim.g.netrw_liststyle = 3  -- tree view for :Ex or :edit .
