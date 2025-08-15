@@ -1,0 +1,19 @@
+source ~/_vimrc
+set scrolloff=5
+set incsearch
+
+map ff <Action>(SelectAllOccurrences)
+map tt <Action>(QuickImplementations)
+map zq <Action>(GotoFile)
+map zz <Action>(ShowPopupMenu)
+map ' %
+map h ^
+map l $
+map r R
+map gi <Action>(GotoImplementation)
+
+map n 5j
+map e 5k
+
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
